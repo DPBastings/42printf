@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   libftprintf.h                                      :+:    :+:            */
+/*   misc.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/25 13:23:18 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/08 15:27:25 by dbasting      ########   odam.nl         */
+/*   Created: 2022/11/08 11:46:13 by dbasting      #+#    #+#                 */
+/*   Updated: 2022/11/08 13:47:45 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "../headers/misc.h"
+#include "../libft/libft.h"
 
-# include <stdarg.h>
-# include <stddef.h>
+static int	ft_isspace(char c)
+{
+	if ((c >= '\t' && c <= '\r') || c == ' ')
+		return (1);
+	return (0);
+}
 
-int	ft_printf(char const *format, ...);
-int	ft_dprintf(int fd, char const *format, ...);
-int	ft_vprintf(char const *format, va_list ap);
-int	ft_vdprintf(int fd, char const *format, va_list ap);
-
-#endif
+int	misc_atoi(char const **str)
+{
+	int	number;
+	
+	number = 0;
+	while (ft_isspace(**str))
+		(*str)++;
+	while (ft_isdigit(**str))
+	{
+		number *= 10;
+		number += **str - '0';
+		(*str)++;
+	}
+	return (number);
+}
