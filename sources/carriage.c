@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memset.c                                        :+:    :+:            */
+/*   carriage.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/04 15:15:51 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/11 15:16:42 by dbasting      ########   odam.nl         */
+/*   Created: 2022/11/08 15:24:58 by dbasting      #+#    #+#                 */
+/*   Updated: 2022/11/18 13:15:50 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "carriage.h"
+#include <stddef.h>
+#include <unistd.h>
 #include <stdio.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+void	print(t_carriage *self, char *str, size_t len)
 {
-	unsigned char	*dst;
-	unsigned char	character;
+	size_t	old_written;
 
-	dst = (unsigned char *)b;
-	character = (unsigned char) c;
-	while (len--)
-		*dst++ = character;
-	return (b);
+	old_written = self->written;
+	write(self->paper, str++, len);
+	self->written += len;
+	printf("\n%zd new chars have been written (total: %zd)\n", self->written - old_written, self->written);
 }

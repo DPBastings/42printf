@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memset.c                                        :+:    :+:            */
+/*   printhex.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/04 15:15:51 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/11 15:16:42 by dbasting      ########   odam.nl         */
+/*   Created: 2022/11/04 15:09:02 by dbasting      #+#    #+#                 */
+/*   Updated: 2022/11/14 16:52:20 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "../headers/carriage.h"
+#include "../libft/libft.h"
+#include <stdarg.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+char const	hexdigits_low[] = "0123456789abcdef";
+char const	hexdigits_upp[] = "0123456789ABCDEF";
+
+void	printhex(t_carriage *carriage, t_token *token, va_list ap)
 {
-	unsigned char	*dst;
-	unsigned char	character;
+	(void) carriage;
+	(void) token;
+	(void) ap;
+}
 
-	dst = (unsigned char *)b;
-	character = (unsigned char) c;
-	while (len--)
-		*dst++ = character;
-	return (b);
+void	printptr(t_carriage *carriage, t_token *token, va_list ap)
+{
+	printhex(carriage, token, ap);
 }

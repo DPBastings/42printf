@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memset.c                                        :+:    :+:            */
+/*   expand_token.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/04 15:15:51 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/11 15:16:42 by dbasting      ########   odam.nl         */
+/*   Created: 2022/11/14 15:14:20 by dbasting      #+#    #+#                 */
+/*   Updated: 2022/11/18 15:07:56 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "carriage.h"
+#include "token.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+t_printer const	g_printdict[] = {
+	printlit,
+	printdec,
+	printdec,
+	printuns,
+	printhex,
+	printhex,
+	printchr,
+	printstr,
+	printpercent
+};
+
+void	expand_token(t_carriage *carriage, t_token *token, va_list ap)
 {
-	unsigned char	*dst;
-	unsigned char	character;
-
-	dst = (unsigned char *)b;
-	character = (unsigned char) c;
-	while (len--)
-		*dst++ = character;
-	return (b);
+	g_printdict[token->specifier](carriage, token, ap);
 }

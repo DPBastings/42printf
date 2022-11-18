@@ -6,11 +6,11 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 11:46:13 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/08 13:47:45 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/14 12:06:56 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/misc.h"
+#include "misc.h"
 #include "../libft/libft.h"
 
 static int	ft_isspace(char c)

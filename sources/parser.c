@@ -6,40 +6,56 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 14:58:51 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/08 13:33:12 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/14 17:29:07 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/parser.h"
+#include "token.h"
 #include "../libft/libft.h"
 #include <stddef.h>
 #include <stdlib.h>
 
-/*static void destroy_converter(t_converter *converter)
+t_token *ignore_flags(t_token *token)
 {
-	free(converter);
-}*/
-
-t_list	*parser(char const *format)
-{
-	char const	**tracker;
-	t_list		*converters;
-	t_converter	*new;
-
-	converters = NULL;
-	tracker = &format;
-	while (**tracker)
+	if (ft_strchr(SPECIFIERS_INT, token->specifier))
 	{
-		if (**tracker == '%')
+		if (token->precision != 1)
 		{
-			(*tracker)++;
-			new = get_converter(tracker);
-			if (new)
-				ft_lstadd_back(&converters, ft_lstnew(new));
-			else
-				continue ;
+			token->flags |= FLAG_ZEROPADDING;
+			token->flags &= ~FLAG_LEFTALIGN;
+			token->field_width = 0;
 		}
-		(*tracker)++;
 	}
-	return (converters);
+	return (token);
+}
+
+t_token	*parse_literal(char const **format)
+{
+	t_token	*new;
+
+	new = ft_calloc(1, sizeof(t_token));
+	if (new == NULL)
+		return (NULL);
+	new->flags = **format;
+	(*format)++;
+	return (new);
+}
+
+t_token	*parser(char const **format)
+{
+	t_token	*new;
+
+	if (**format == '%')
+	{
+		new = parse_conversion(format);
+		if (new == NULL)
+			return (NULL);
+	}
+	else
+	{
+		new = parse_literal(format);
+		if (new == NULL)
+			return (NULL);
+	}
+	return (new);
 }

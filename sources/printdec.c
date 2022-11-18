@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memset.c                                        :+:    :+:            */
+/*   printdec.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/04 15:15:51 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/11 15:16:42 by dbasting      ########   odam.nl         */
+/*   Created: 2022/11/08 16:12:09 by dbasting      #+#    #+#                 */
+/*   Updated: 2022/11/14 16:35:38 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "carriage.c"
+#include <stdarg.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+void	printdec(t_carriage *carriage, t_token *token, va_list ap)
 {
-	unsigned char	*dst;
-	unsigned char	character;
+	(void) carriage;
+	(void) token;
+	(void) ap;
+}
 
-	dst = (unsigned char *)b;
-	character = (unsigned char) c;
-	while (len--)
-		*dst++ = character;
-	return (b);
+void	printuns(t_carriage *carriage, t_token *token, va_list ap)
+{
+	printdec(carriage, token, ap);
 }
