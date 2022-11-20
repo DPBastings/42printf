@@ -24,7 +24,7 @@ HEADER_FILES := libftprintf.h\
 LIB_FILES :=	libft.a
 CFLAGS ?= 		-Wall -Wextra -Werror -I $(HEADER_DIR)
 AFLAGS ?=		-r -c -u
-PHONY: all bonus clean fclean libft re
+.PHONY: all bonus clean fclean libft re
 
 all: $(NAME)
 
@@ -41,7 +41,7 @@ $(NAME): $(addprefix $(OBJ_DIR),$(OBJ_FILES))
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(HEADER_DIR),$(HEADER_FILES))
 	@mkdir -p $(OBJ_DIR)
-	$(CC) -c $(CFLAGS) -o $@ $<
+	@$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
 	@rm -f $(OBJ_DIR)*.o
