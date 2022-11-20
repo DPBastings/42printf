@@ -21,25 +21,27 @@ HEADER_FILES := libftprintf.h\
 				carriage.h\
 				misc.h\
 				token.h
+LIB_FILES :=	libft.a
 CFLAGS ?= 		-Wall -Wextra -Werror -I $(HEADER_DIR)
-SRC_FILES := 	$(SRC_FILES:%=$(SRC_DIR)%)
-OBJ_FILES :=	$(OBJ_FILES:%=$(OBJ_DIR)%)
-HEADER_FILES :=	$(HEADER_FILES:%=$(HEADER_DIR)%)
-
-PHONY: all bonus clean fclean re
+AFLAGS ?=		-r -c -u
+PHONY: all bonus clean fclean libft re
 
 all: $(NAME)
 
 bonus: all
 	@echo "Bonus is basis, vrind."
 	
-$(NAME): $(OBJ_FILES)
+$(NAME): $(addprefix $(OBJ_DIR),$(OBJ_FILES))
 	@$(MAKE) --directory=$(LIB_DIR)
-	@ar -rcu $@ $< libft/libft.a
+	@ar $(AFLAGS) $@ $^
+	@mkdir -p temp
+	@ar -x --output temp $(addprefix $(LIB_DIR),$(LIB_FILES))
+	@ar $(AFLAGS) $@ temp/*.o
+	@rm -rf temp
 
-%.o: %.c $(HEADER_FILES)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(HEADER_DIR),$(HEADER_FILES))
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) -c $(CFLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
 	@rm -f $(OBJ_DIR)*.o
