@@ -14,5 +14,6 @@
 # define MISC_H
 
 int	misc_atoi(char const **str);
+void	misc_itoa(long number, char *array, char const *digits);
 
 #endif

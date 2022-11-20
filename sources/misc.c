@@ -20,6 +20,43 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
+void	ft_strrev(char *str)
+{
+	char	*end;
+	char	storage;
+
+	end = str + ft_strlen(str) - 1;
+	while (str < end)
+	{
+		storage = *str;
+		*str++ = *end;
+		*end-- = storage;
+	}
+}
+
+void	misc_itoa(long number, char *array, char const *digits)
+{
+	size_t	radix;
+	size_t	index;
+
+	radix = ft_strlen(digits);
+	index = 0;
+	if (number == 0)
+		array[index++] = digits[0];
+	if (number < 0)
+	{
+		array[index++] = '-';
+		number *= -1;
+	}
+	while (number)
+	{
+		array[index++] = digits[number % radix];
+		number /= radix;
+	}
+	array[index] = '\0';
+	ft_strrev(array + (array[0] == '-'));
+}
+
 int	misc_atoi(char const **str)
 {
 	int	number;
