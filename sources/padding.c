@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 14:58:35 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 14:29:38 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/21 16:20:04 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 	if (padding == NULL)
 		return ;
 	if (token->flags & FLAG_ZEROPADDING)
-		ft_memset(token, '0', len);
+		ft_memset(padding, '0', len);
 	else
-		ft_memset(token, ' ', len);
+		ft_memset(padding, ' ', len);
 	print(carriage, padding, len);
 	free(padding);
 }
