@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 14:58:35 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/14 18:16:35 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:29:38 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 
 static void	pad(t_carriage *carriage, t_token *token, size_t len)
 {
-	if (len > token->field_width)
-		len -= token->field_width;
+	if (len < token->field_width)
+		len = token->field_width - len;
 	else
 		len = 0;
 	print_padding(carriage, token, len);
