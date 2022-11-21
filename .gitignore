@@ -1,0 +1,11 @@
+# Compiler products
+a.out
+*.a
+libft/*.o
+objects/
+temp/
+
+# Trash
+.DS_Store
+.*.swp
+.*.swq
