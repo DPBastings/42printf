@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/04 14:07:42 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/14 18:25:34 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/21 16:03:37 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	ft_vdprintf(int fd, char const *format, va_list ap)
 		counter++;
 	}
 	va_end(ap);
-	printf("%zu tokens have been processed\n", counter);
 	return (carriage.written);
 }
 

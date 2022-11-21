@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 16:11:11 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/14 17:07:33 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/21 17:27:11 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define FLAG_SPACE			(1 << 3)
 # define FLAG_SIGNED		(1 << 4)
 
+# define HAS_FLAG(token, flag)		token->flags & flag ? 1 : 0
+# define SET_FLAG(token, flag)		token->flags |= flag
+# define UNSET_FLAG(token, flag)	token->flags &= ~flag
+
 # define SPECIFIERS 		"diuxXcsp%"
 # define SPECIFIERS_INT 	"diuxX"
 
@@ -43,6 +47,7 @@ typedef enum e_specifiers
 	SPEC_HEXUPP,
 	SPEC_CHR,
 	SPEC_STR,
+	SPEC_PTR,
 	SPEC_PERCENT
 }	t_specifiers;
 

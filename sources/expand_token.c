@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 15:14:20 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/18 15:07:56 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/21 17:27:28 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_printer const	g_printdict[] = {
 	printhex,
 	printchr,
 	printstr,
+	printptr,
 	printpercent
 };
 

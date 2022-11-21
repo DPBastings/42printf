@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 15:00:57 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/14 17:36:15 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/21 16:18:59 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static int	parse_flags(t_token *token, char const **format)
 	while (ft_strchr(FLAGS, **format))
 	{
 		if (**format == '#')
-			token->flags |= FLAG_ALTERNATIVE;
+			SET_FLAG(token, FLAG_ALTERNATIVE);
 		else if (**format == '0')
-			token->flags |= FLAG_ZEROPADDING;
+			SET_FLAG(token, FLAG_ZEROPADDING);
 		else if (**format == '-')
-			token->flags |= FLAG_LEFTALIGN;
+			SET_FLAG(token, FLAG_LEFTALIGN);
 		else if (**format == ' ')
-			token->flags |= FLAG_SPACE;
+			SET_FLAG(token, FLAG_SPACE);
 		else if (**format == '+')
-			token->flags |= FLAG_SIGNED;
+			SET_FLAG(token, FLAG_SIGNED);
 		(*format)++;
 	}
 	return (1);
