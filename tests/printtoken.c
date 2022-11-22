@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/token.h"
+#include "printtoken.h"
+#include "../headers/token.h"
 #include <stdio.h>
 
 void	printtoken(t_token *token)

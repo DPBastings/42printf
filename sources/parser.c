@@ -14,7 +14,6 @@
 #include "../libft/libft.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include "../printtoken.h"
 
 t_token *ignore_flags(t_token *token)
 {

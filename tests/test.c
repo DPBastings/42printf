@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/libftprintf.h"
-#include "libft/libft.h"
+#include "printtoken.h"
+#include "../headers/libftprintf.h"
+#include "../libft/libft.h"
 #include <stdio.h>
-#include <limits.h>
 
 static void	print_len(int num)
 {

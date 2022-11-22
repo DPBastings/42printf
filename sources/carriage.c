@@ -16,9 +16,6 @@
 
 void	print(t_carriage *self, char *str, size_t len)
 {
-	size_t	old_written;
-
-	old_written = self->written;
 	write(self->paper, str++, len);
 	self->written += len;
 }
