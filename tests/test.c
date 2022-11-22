@@ -28,19 +28,19 @@ int	main(void)
 	int				printed;
 
 	string = ft_strdup("gekke geit");
-	integer = -1685;
-	unsigned_integer = 2147483648;
+	integer = 1685;
+	unsigned_integer = 16;
 	printed = ft_printf("%15p", string);
 	print_len(printed);
 	printed = printf("%15p", string);
 	print_len(printed);
-	printed = ft_printf("%u", integer);
+	printed = ft_printf("%-.5d", integer);
 	print_len(printed);
-	printed = printf("%u", integer);
+	printed = printf("%-.5d", integer);
 	print_len(printed);
-	printed = ft_printf("%0-15u", unsigned_integer);
+	printed = ft_printf("%.15x", unsigned_integer);
 	print_len(printed);
-	printed = printf("%-15u", unsigned_integer);
+	printed = printf("%.15x", unsigned_integer);
 	print_len(printed);
 	return (0);
 }

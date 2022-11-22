@@ -48,6 +48,8 @@ void	misc_itoa(unsigned long number, char *array, char const *digits)
 		array[index++] = digits[number % radix];
 		number /= radix;
 	}
+	while(array[index] == '0')
+		index++;
 	array[index] = '\0';
 	ft_strrev(array);
 }

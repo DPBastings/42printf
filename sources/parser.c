@@ -17,17 +17,13 @@
 
 t_token *ignore_flags(t_token *token)
 {
-	if (token->specifier >= SPEC_DEC && token->specifier <= SPEC_HEXUPP)
+	if (SPEC_IS_INTEGER(token))
 	{
-		if (token->precision != -1)
-		{
-			SET_FLAG(token, FLAG_ZEROPADDING);
-			UNSET_FLAG(token, FLAG_LEFTALIGN);
-			token->field_width = 0;
-		}
-		if (token->specifier == SPEC_PTR || HAS_FLAG(token, FLAG_LEFTALIGN))
+		if (HAS_FLAG(token, FLAG_LEFTALIGN))
 			UNSET_FLAG(token, FLAG_ZEROPADDING);
 	}
+	if (token->specifier == SPEC_PTR)
+		UNSET_FLAG(token, FLAG_ZEROPADDING);
 	return (token);
 }
 

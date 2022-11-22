@@ -35,7 +35,6 @@
 # define UNSET_FLAG(token, flag)	token->flags &= ~flag
 
 # define SPECIFIERS 		"diuxXcsp%"
-# define SPECIFIERS_INT 	"diuxX"
 
 typedef enum e_specifiers
 {
@@ -50,6 +49,14 @@ typedef enum e_specifiers
 	SPEC_PTR,
 	SPEC_PERCENT
 }	t_specifiers;
+
+# define SPEC_IS_SIGNED(token)		(token->specifier == SPEC_DEC\
+										|| token->specifier == SPEC_INT)
+# define SPEC_IS_HEX(token)			(token->specifier == SPEC_HEXLOW\
+										|| token->specifier == SPEC_HEXUPP)
+# define SPEC_IS_UNSIGNED(token)	(token->specifier == SPEC_UNS\
+										|| SPEC_IS_HEX(token))	
+# define SPEC_IS_INTEGER(token)		(SPEC_IS_SIGNED(token) || SPEC_IS_UNSIGNED(token))
 
 typedef struct s_token
 {

@@ -14,6 +14,7 @@
 #include "token.h"
 #include "../libft/libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 {
@@ -29,8 +30,6 @@ static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 	print(carriage, padding, len);
 	free(padding);
 }
-
-//kan wellicht ook zonder malloc
 
 static void	pad(t_carriage *carriage, t_token *token, size_t len)
 {
@@ -51,4 +50,36 @@ void	pad_right(t_carriage *carriage, t_token *token, size_t len)
 {
 	if (token->flags & FLAG_LEFTALIGN)
 		pad(carriage, token, len);
+}
+
+char *get_prefix(t_token *token, long value)
+{
+	char	*prefix;
+	size_t	index;
+
+	prefix = ft_calloc(4, sizeof(char));
+	if (prefix == NULL)
+		return (NULL);
+	index = 0;
+	if (SPEC_IS_SIGNED(token))
+	{
+		if (value < 0)
+			prefix[index++] = '-';
+		else
+		{
+			if (HAS_FLAG(token, FLAG_SIGNED))
+				prefix[index++] = '+';
+			else if (HAS_FLAG(token, FLAG_SPACE))
+				prefix[index++] = ' ';
+		}
+	}
+	if (SPEC_IS_HEX(token) && HAS_FLAG(token, FLAG_ALTERNATIVE))
+	{
+		prefix[index++] = '0';
+		if (token->specifier == SPEC_HEXLOW)
+			prefix[index++] = 'x';
+		else
+			prefix[index++] = 'X';
+	}
+	return (prefix);
 }
