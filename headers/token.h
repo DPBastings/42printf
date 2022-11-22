@@ -61,8 +61,8 @@ typedef enum e_specifiers
 typedef struct s_token
 {
 	unsigned char	flags;
-	size_t			field_width;
-	ssize_t			precision;
+	unsigned int	field_width;
+	int				precision;
 	unsigned char	specifier;
 }	t_token;
 

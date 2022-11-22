@@ -31,8 +31,8 @@ void	printtoken(t_token *token)
 		if (token->flags & FLAG_SIGNED)
 			printf("+");
 		printf("\n");
-		printf(">     width: %zu\n", token->field_width);
-		printf("> precision: %zd\n", token->precision);
+		printf(">     width: %u\n", token->field_width);
+		printf("> precision: %d\n", token->precision);
 		printf("> specifier: %d\n", token->specifier);
 	}
 	else

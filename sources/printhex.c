@@ -17,31 +17,31 @@
 
 void	printhex(t_carriage *carriage, t_token *token, va_list ap)
 {
-	unsigned long	number;
-	char			buffer[128];
+	unsigned int	number;
 	char			*prefix;
+	char			*string;
 
-	number = (unsigned long) va_arg(ap, int);
+	number = va_arg(ap, unsigned int);
 	prefix = get_prefix(token, number);
-	while (token->precision > 0)
-		buffer[token->precision-- - 1] = '0';
 	if (token->specifier == SPEC_HEXUPP)
-		misc_itoa(number, buffer, "0123456789ABCDEF");
+		string = misc_itostr(number, token, "0123456789ABCDEF");
 	else
-		misc_itoa(number, buffer, "0123456789abcdef");
-	printnum(carriage, token, buffer, prefix);
+		string = misc_itostr(number, token, "0123456789abcdef");
+	if (string == NULL)
+		return ;
+	printnum(carriage, token, string, prefix);
 }
 
 void	printptr(t_carriage *carriage, t_token *token, va_list ap)
 {
-	unsigned long	number;
-	char			buffer[128];
+	unsigned long	pointer;
+	char			*string;
 	char 			*prefix;
 
-	number = (unsigned long) va_arg(ap, void *);
+	pointer = (unsigned long) va_arg(ap, void *);
 	prefix = ft_strdup("0x");
-	if (prefix == NULL)
+	string = misc_itostr(pointer, token, "0123456789abcdef");
+	if (prefix == NULL || string == NULL)
 		return ;
-	misc_itoa(number, buffer, "0123456789abcdef");
-	printnum(carriage, token, buffer, prefix);
+	printnum(carriage, token, string, prefix);
 }

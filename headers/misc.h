@@ -13,7 +13,11 @@
 #ifndef MISC_H
 # define MISC_H
 
+# include "token.h"
+# include <stddef.h>
+
 int		misc_atoi(char const **str);
-void	misc_itoa(unsigned long number, char *array, char const *digits);
+char	*misc_itostr(unsigned long number, t_token *token, char const *digits);
+size_t	misc_itoa(unsigned long number, char *array, char const *digits);
 
 #endif

@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 
 #include "misc.h"
+#include "token.h"
 #include "../libft/libft.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 static int	ft_isspace(char c)
 {
@@ -20,7 +23,7 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
-void	ft_strrev(char *str)
+static void	ft_strrev(char *str)
 {
 	char	*end;
 	char	storage;
@@ -34,7 +37,29 @@ void	ft_strrev(char *str)
 	}
 }
 
-void	misc_itoa(unsigned long number, char *array, char const *digits)
+char	*misc_itostr(unsigned long number, t_token *token, char const *digits)
+{
+	char	*string;
+	char	buffer[64];
+	size_t	len;
+	size_t	leading;
+	
+	if (token->precision == 0)
+		return (ft_strdup(""));
+	len = misc_itoa(number, buffer, digits);
+	if (token->precision != -1 && (size_t) token->precision > len)
+		leading = token->precision - len;
+	else
+		leading = 0;
+	string = ft_calloc((leading + len + 1), sizeof(char));
+	if (string == NULL)
+		return (NULL);
+	ft_memset(string, '0', leading);
+	ft_strlcat(string, buffer, leading + len + 1);
+	return (string);
+}
+
+size_t	misc_itoa(unsigned long number, char *array, char const *digits)
 {
 	size_t	radix;
 	size_t	index;
@@ -48,10 +73,9 @@ void	misc_itoa(unsigned long number, char *array, char const *digits)
 		array[index++] = digits[number % radix];
 		number /= radix;
 	}
-	while(array[index] == '0')
-		index++;
 	array[index] = '\0';
 	ft_strrev(array);
+	return (index);
 }
 
 int	misc_atoi(char const **str)

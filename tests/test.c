@@ -14,6 +14,7 @@
 #include "../headers/libftprintf.h"
 #include "../libft/libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 static void	print_len(int num)
 {
@@ -23,24 +24,21 @@ static void	print_len(int num)
 int	main(void)
 {
 	char			*string;
-	int				integer;
-	unsigned int	unsigned_integer;
 	int				printed;
 
 	string = ft_strdup("gekke geit");
-	integer = 1685;
-	unsigned_integer = 16;
 	printed = ft_printf("%15p", string);
 	print_len(printed);
 	printed = printf("%15p", string);
 	print_len(printed);
-	printed = ft_printf("%-.5d", integer);
+	printed = ft_printf("%25d", 10);
 	print_len(printed);
-	printed = printf("%-.5d", integer);
+	printed = printf("%25d", 10);
 	print_len(printed);
-	printed = ft_printf("%.15x", unsigned_integer);
+	printed = ft_printf("%.x", 0);
 	print_len(printed);
-	printed = printf("%.15x", unsigned_integer);
+	printed = printf("%.x", 0);
 	print_len(printed);
+	free(string);
 	return (0);
 }

@@ -16,53 +16,60 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-void	printnum(t_carriage *carriage, t_token *token, char *buffer, char *prefix)
+/*static void print_precision(t_carriage *carriage, size_t len)
 {
-	size_t	buffer_len;
+	while (len--)
+		print(carriage, "0", 1);
+}*/
+
+void	printnum(t_carriage *carriage, t_token *token, char *string, char *prefix)
+{
+	size_t	string_len;
 	size_t	prefix_len;
 	
-	buffer_len = ft_strlen(buffer);
+	string_len = ft_strlen(string);
 	prefix_len = ft_strlen(prefix);
 	if (HAS_FLAG(token, FLAG_ZEROPADDING))
 		print(carriage, prefix, prefix_len);
-	pad_left(carriage, token, buffer_len + prefix_len);
+	pad_left(carriage, token, prefix_len + string_len);
 	if (!(HAS_FLAG(token, FLAG_ZEROPADDING)))
 		print(carriage, prefix, prefix_len);
-	print(carriage, buffer, buffer_len);
-	pad_right(carriage, token, buffer_len + prefix_len);
+	print(carriage, string, string_len);	
+	pad_right(carriage, token, prefix_len + string_len);
 	free(prefix);
-}
-
-static void	fill_precision(char *buffer, t_token *token)
-{
-	while (token->precision > 0)
-		buffer[token->precision-- - 1] = '0';
+	free(string);
 }
 
 void	printdec(t_carriage *carriage, t_token *token, va_list ap)
 {
-	long	number;
-	char	buffer[128];
+	int		number;
+	char	*string;
 	char	*prefix;
 
-	number = (long) va_arg(ap, int);
+	number = va_arg(ap, int);
 	prefix = get_prefix(token, number);
+	if (prefix == NULL)
+		return ;
 	if (number < 0)
 		number *= -1;
-	fill_precision(buffer, token);
-	misc_itoa((unsigned long) number, buffer, "0123456789");
-	printnum(carriage, token, buffer, prefix);
+	string = misc_itostr((unsigned long) number, token, "0123456789");
+	if (string == NULL)
+		return (free(prefix));
+	printnum(carriage, token, string, prefix);
 }
 
 void	printuns(t_carriage *carriage, t_token *token, va_list ap)
 {
-	unsigned long	number;
-	char			buffer[128];
+	unsigned int	number;
+	char			*string;
 	char			*prefix;
 	
-	number = (unsigned long) va_arg(ap, unsigned int);
+	number = va_arg(ap, unsigned int);
 	prefix = get_prefix(token, number);
-	fill_precision(buffer, token);
-	misc_itoa(number, buffer, "0123456789");
-	printnum(carriage, token, buffer, prefix);
+	if (prefix == NULL)
+		return ;
+	string = misc_itostr((unsigned long) number, token, "0123456789");
+	if (string == NULL)
+		return (free(prefix));
+	printnum(carriage, token, string, prefix);
 }
