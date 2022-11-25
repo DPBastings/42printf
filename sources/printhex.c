@@ -36,7 +36,7 @@ void	printptr(t_carriage *carriage, t_token *token, va_list ap)
 {
 	unsigned long	pointer;
 	char			*string;
-	char 			*prefix;
+	char			*prefix;
 
 	pointer = (unsigned long) va_arg(ap, void *);
 	prefix = ft_strdup("0x");

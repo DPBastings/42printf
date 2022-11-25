@@ -52,34 +52,28 @@ void	pad_right(t_carriage *carriage, t_token *token, size_t len)
 		pad(carriage, token, len);
 }
 
-char *get_prefix(t_token *token, long value)
+char	*get_prefix(t_token *token, long value)
 {
 	char	*prefix;
-	size_t	index;
 
-	prefix = ft_calloc(4, sizeof(char));
-	if (prefix == NULL)
-		return (NULL);
-	index = 0;
 	if (SPEC_IS_SIGNED(token))
 	{
 		if (value < 0)
-			prefix[index++] = '-';
+			prefix = ft_strdup("-");
 		else
 		{
 			if (HAS_FLAG(token, FLAG_SIGNED))
-				prefix[index++] = '+';
+				prefix = ft_strdup("+");
 			else if (HAS_FLAG(token, FLAG_SPACE))
-				prefix[index++] = ' ';
+				prefix = ft_strdup(" ");
 		}
 	}
-	if (SPEC_IS_HEX(token) && HAS_FLAG(token, FLAG_ALTERNATIVE))
+	else if (SPEC_IS_HEX(token) && HAS_FLAG(token, FLAG_ALTERNATIVE))
 	{
-		prefix[index++] = '0';
 		if (token->specifier == SPEC_HEXLOW)
-			prefix[index++] = 'x';
+			prefix = ft_strdup("0x");
 		else
-			prefix[index++] = 'X';
+			prefix = ft_strdup("0X");
 	}
 	return (prefix);
 }

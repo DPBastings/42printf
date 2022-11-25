@@ -43,7 +43,7 @@ char	*misc_itostr(unsigned long number, t_token *token, char const *digits)
 	char	buffer[64];
 	size_t	len;
 	size_t	leading;
-	
+
 	if (token->precision == 0)
 		return (ft_strdup(""));
 	len = misc_itoa(number, buffer, digits);
@@ -81,7 +81,7 @@ size_t	misc_itoa(unsigned long number, char *array, char const *digits)
 int	misc_atoi(char const **str)
 {
 	int	number;
-	
+
 	number = 0;
 	while (ft_isspace(**str))
 		(*str)++;

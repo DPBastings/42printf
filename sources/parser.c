@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-t_token *ignore_flags(t_token *token)
+t_token	*ignore_flags(t_token *token)
 {
 	if (SPEC_IS_INTEGER(token))
 	{

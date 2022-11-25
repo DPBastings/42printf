@@ -22,22 +22,22 @@
 		print(carriage, "0", 1);
 }*/
 
-void	printnum(t_carriage *carriage, t_token *token, char *string, char *prefix)
+void	printnum(t_carriage *carriage, t_token *token, char *str, char *prfx)
 {
 	size_t	string_len;
 	size_t	prefix_len;
-	
-	string_len = ft_strlen(string);
-	prefix_len = ft_strlen(prefix);
+
+	string_len = ft_strlen(str);
+	prefix_len = ft_strlen(prfx);
 	if (HAS_FLAG(token, FLAG_ZEROPADDING))
-		print(carriage, prefix, prefix_len);
+		print(carriage, prfx, prefix_len);
 	pad_left(carriage, token, prefix_len + string_len);
 	if (!(HAS_FLAG(token, FLAG_ZEROPADDING)))
-		print(carriage, prefix, prefix_len);
-	print(carriage, string, string_len);	
+		print(carriage, prfx, prefix_len);
+	print(carriage, str, string_len);
 	pad_right(carriage, token, prefix_len + string_len);
-	free(prefix);
-	free(string);
+	free(prfx);
+	free(str);
 }
 
 void	printdec(t_carriage *carriage, t_token *token, va_list ap)
@@ -63,7 +63,7 @@ void	printuns(t_carriage *carriage, t_token *token, va_list ap)
 	unsigned int	number;
 	char			*string;
 	char			*prefix;
-	
+
 	number = va_arg(ap, unsigned int);
 	prefix = get_prefix(token, number);
 	if (prefix == NULL)

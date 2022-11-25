@@ -26,7 +26,7 @@ void	printpercent(t_carriage *carriage, t_token *token, va_list ap)
 void	printchr(t_carriage *carriage, t_token *token, va_list ap)
 {
 	char	c;
-	
+
 	c = (char) va_arg(ap, int);
 	pad_left(carriage, token, 1);
 	print(carriage, &c, 1);
