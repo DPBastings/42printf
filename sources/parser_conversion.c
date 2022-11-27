@@ -21,15 +21,15 @@ static int	parse_flags(t_token *token, char const **format)
 	while (ft_strchr(FLAGS, **format))
 	{
 		if (**format == '#')
-			SET_FLAG(token, FLAG_ALTERNATIVE);
+			set_flag(token, FLAG_ALTERNATIVE);
 		else if (**format == '0')
-			SET_FLAG(token, FLAG_ZEROPADDING);
+			set_flag(token, FLAG_ZEROPADDING);
 		else if (**format == '-')
-			SET_FLAG(token, FLAG_LEFTALIGN);
+			set_flag(token, FLAG_LEFTALIGN);
 		else if (**format == ' ')
-			SET_FLAG(token, FLAG_SPACE);
+			set_flag(token, FLAG_SPACE);
 		else if (**format == '+')
-			SET_FLAG(token, FLAG_SIGNED);
+			set_flag(token, FLAG_SIGNED);
 		(*format)++;
 	}
 	return (1);

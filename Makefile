@@ -27,7 +27,8 @@ SRC_FILES := ft_printf.c\
 	printdec.c\
 	printhex.c\
 	printlit.c\
-	printstr.c
+	printstr.c\
+	token.c
 OBJ_FILES := $(SRC_FILES:.c=.o)
 HEADER_FILES := libftprintf.h\
 	carriage.h\

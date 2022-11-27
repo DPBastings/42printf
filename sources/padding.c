@@ -23,7 +23,7 @@ static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 	padding = malloc(len);
 	if (padding == NULL)
 		return ;
-	if (token->flags & FLAG_ZEROPADDING)
+	if (has_flag(token, FLAG_ZEROPADDING))
 		ft_memset(padding, '0', len);
 	else
 		ft_memset(padding, ' ', len);
@@ -42,13 +42,13 @@ static void	pad(t_carriage *carriage, t_token *token, size_t len)
 
 void	pad_left(t_carriage *carriage, t_token *token, size_t len)
 {
-	if (!(token->flags & FLAG_LEFTALIGN))
+	if (!(has_flag(token, FLAG_LEFTALIGN)))
 		pad(carriage, token, len);
 }
 
 void	pad_right(t_carriage *carriage, t_token *token, size_t len)
 {
-	if (token->flags & FLAG_LEFTALIGN)
+	if (has_flag(token, FLAG_LEFTALIGN))
 		pad(carriage, token, len);
 }
 
@@ -56,23 +56,23 @@ char	*get_prefix(t_token *token, long value)
 {
 	char	*prefix;
 
-	if (SPEC_IS_SIGNED(token))
+	if (token->specifier == SPEC_DEC || token->specifier == SPEC_INT)
 	{
 		if (value < 0)
 			prefix = ft_strdup("-");
 		else
 		{
-			if (HAS_FLAG(token, FLAG_SIGNED))
+			if (has_flag(token, FLAG_SIGNED))
 				prefix = ft_strdup("+");
-			else if (HAS_FLAG(token, FLAG_SPACE))
+			else if (has_flag(token, FLAG_SPACE))
 				prefix = ft_strdup(" ");
 		}
 	}
-	else if (SPEC_IS_HEX(token) && HAS_FLAG(token, FLAG_ALTERNATIVE))
+	else if (has_flag(token, FLAG_ALTERNATIVE))
 	{
 		if (token->specifier == SPEC_HEXLOW)
 			prefix = ft_strdup("0x");
-		else
+		else if (token->specifier == SPEC_HEXUPP)
 			prefix = ft_strdup("0X");
 	}
 	return (prefix);

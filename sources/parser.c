@@ -17,13 +17,13 @@
 
 t_token	*ignore_flags(t_token *token)
 {
-	if (SPEC_IS_INTEGER(token))
+	if (is_int_conversion(token))
 	{
-		if (HAS_FLAG(token, FLAG_LEFTALIGN))
-			UNSET_FLAG(token, FLAG_ZEROPADDING);
+		if (has_flag(token, FLAG_LEFTALIGN))
+			unset_flag(token, FLAG_ZEROPADDING);
 	}
 	if (token->specifier == SPEC_PTR)
-		UNSET_FLAG(token, FLAG_ZEROPADDING);
+		unset_flag(token, FLAG_ZEROPADDING);
 	return (token);
 }
 

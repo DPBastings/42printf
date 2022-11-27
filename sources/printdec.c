@@ -16,12 +16,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-/*static void print_precision(t_carriage *carriage, size_t len)
-{
-	while (len--)
-		print(carriage, "0", 1);
-}*/
-
 void	printnum(t_carriage *carriage, t_token *token, char *str, char *prfx)
 {
 	size_t	string_len;
@@ -29,10 +23,10 @@ void	printnum(t_carriage *carriage, t_token *token, char *str, char *prfx)
 
 	string_len = ft_strlen(str);
 	prefix_len = ft_strlen(prfx);
-	if (HAS_FLAG(token, FLAG_ZEROPADDING))
+	if (has_flag(token, FLAG_ZEROPADDING))
 		print(carriage, prfx, prefix_len);
 	pad_left(carriage, token, prefix_len + string_len);
-	if (!(HAS_FLAG(token, FLAG_ZEROPADDING)))
+	if (!(has_flag(token, FLAG_ZEROPADDING)))
 		print(carriage, prfx, prefix_len);
 	print(carriage, str, string_len);
 	pad_right(carriage, token, prefix_len + string_len);
