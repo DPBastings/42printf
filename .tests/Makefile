@@ -4,7 +4,7 @@ SRC_FILES := test.c printtoken.c ../libftprintf.a
 CFLAGS ?= -Wall -Wextra -Werror
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: $(NAME) Makefile
 
 $(NAME): $(SRC_FILES)
 	@$(CC) $(CFLAGS) $^
