@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 11:46:13 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 14:29:40 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/28 14:20:42 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 #include "token.h"
 #include "../libft/libft.h"
 #include <stdlib.h>
-#include <stdio.h>
-
-static int	ft_isspace(char c)
-{
-	if ((c >= '\t' && c <= '\r') || c == ' ')
-		return (1);
-	return (0);
-}
 
 static void	ft_strrev(char *str)
 {
@@ -37,29 +29,7 @@ static void	ft_strrev(char *str)
 	}
 }
 
-char	*misc_itostr(unsigned long number, t_token *token, char const *digits)
-{
-	char	*string;
-	char	buffer[64];
-	size_t	len;
-	size_t	leading;
-
-	if (token->precision == 0)
-		return (ft_strdup(""));
-	len = misc_itoa(number, buffer, digits);
-	if (token->precision != -1 && (size_t) token->precision > len)
-		leading = token->precision - len;
-	else
-		leading = 0;
-	string = ft_calloc((leading + len + 1), sizeof(char));
-	if (string == NULL)
-		return (NULL);
-	ft_memset(string, '0', leading);
-	ft_strlcat(string, buffer, leading + len + 1);
-	return (string);
-}
-
-size_t	misc_itoa(unsigned long number, char *array, char const *digits)
+static size_t	misc_itoa(unsigned long number, char *array, char const *digits)
 {
 	size_t	radix;
 	size_t	index;
@@ -78,12 +48,35 @@ size_t	misc_itoa(unsigned long number, char *array, char const *digits)
 	return (index);
 }
 
+char	*misc_itostr(unsigned long number, t_token *token, char const *digits)
+{
+	char	*string;
+	char	buffer[32];
+	size_t	len;
+	size_t	leading;
+
+	if (!(number == 0 && token->precision == 0))
+		len = misc_itoa(number, buffer, digits);
+	else
+		len = 0;
+	if (token->precision != -1 && (size_t) token->precision > len)
+		leading = token->precision - len;
+	else
+		leading = 0;
+	string = ft_calloc((leading + len + 1), sizeof(char));
+	if (string == NULL)
+		return (NULL);
+	ft_memset(string, '0', leading);
+	ft_strlcat(string, buffer, leading + len + 1);
+	return (string);
+}
+
 int	misc_atoi(char const **str)
 {
 	int	number;
 
 	number = 0;
-	while (ft_isspace(**str))
+	while ((**str >= '\t' && **str <= '\r') || **str == ' ')
 		(*str)++;
 	while (ft_isdigit(**str))
 	{

@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 14:58:51 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 17:08:35 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/28 12:27:40 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include "../libft/libft.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 t_token	*ignore_flags(t_token *token)
 {
-	if (is_int_conversion(token))
-	{
-		if (has_flag(token, FLAG_LEFTALIGN))
-			unset_flag(token, FLAG_ZEROPADDING);
-	}
-	if (token->specifier == SPEC_PTR)
+	if (has_flag(token, FLAG_LEFTALIGN))
+		unset_flag(token, FLAG_ZEROPADDING);
+	if (is_int_conversion(token) && token->precision != -1)
+		unset_flag(token, FLAG_ZEROPADDING);
+	else if (token->specifier == SPEC_PTR)
 		unset_flag(token, FLAG_ZEROPADDING);
 	return (token);
 }

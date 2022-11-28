@@ -6,14 +6,14 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 15:14:20 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 17:27:28 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/28 15:09:52 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "carriage.h"
 #include "token.h"
 
-t_printer const	g_printdict[] = {
+t_printer static	g_printdict[] = {
 	printlit,
 	printdec,
 	printdec,

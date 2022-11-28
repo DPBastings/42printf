@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 15:50:22 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/14 16:46:57 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/28 10:41:22 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	printpercent(t_carriage *carriage, t_token *token, va_list ap)
 {
 	(void) ap;
 	pad_left(carriage, token, 1);
-	print(carriage, "%", 1);
+	carriage->print(carriage, "%", 1);
 	pad_right(carriage, token, 1);
 }
 
@@ -29,6 +29,6 @@ void	printchr(t_carriage *carriage, t_token *token, va_list ap)
 
 	c = (char) va_arg(ap, int);
 	pad_left(carriage, token, 1);
-	print(carriage, &c, 1);
+	carriage->print(carriage, &c, 1);
 	pad_right(carriage, token, 1);
 }

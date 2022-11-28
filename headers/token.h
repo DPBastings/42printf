@@ -6,14 +6,14 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 16:11:11 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 17:27:11 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/28 15:27:10 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* This header contains the following:
+/* The contents of this header are as follows:
  * > Flags: a constant string containing all glyphs used as conversion flags.
- * For every flag, an integer value (corresponding to a single bit) is assigned
- * as well (so that multiple flags can be combined in a single byte).
+ * Every individual flags is also declared as an integer constant suitable for
+ * use in a bit array (see t_token).
  *
  * > Specifiers: a constant string containing all glyphs used as conversion
  * specifiers. This is supplemented by an enumeration of constants denoting
@@ -21,8 +21,13 @@
  * to specifiers.
  *
  * > The t_token struct, to hold all information conveyed by the conversion
- * format (it is returned by the parser).
- */
+ * format (it is returned by the parser), with its members:
+ *   > flags: this either holds all flags as a bit array or, if the token
+ *   corresponds to a string literal character: the value of that character.
+ *   > field_width;
+ *   > precision;
+ *   > specifier: this holds an integer which corresponds to a member of the
+ *   e_specifiers enumeration.*/
 
 #ifndef TOKEN_H
 # define TOKEN_H

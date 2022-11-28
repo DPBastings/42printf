@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 15:24:58 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 14:11:06 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/28 15:27:54 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@
 void	print(t_carriage *self, char *str, size_t len)
 {
 	write(self->paper, str++, len);
-	self->written += len;
+	self->printed += len;
 }

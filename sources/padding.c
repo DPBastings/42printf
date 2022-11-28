@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 14:58:35 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 16:20:04 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/11/28 12:18:27 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 		ft_memset(padding, '0', len);
 	else
 		ft_memset(padding, ' ', len);
-	print(carriage, padding, len);
+	carriage->print(carriage, padding, len);
 	free(padding);
 }
 
@@ -60,20 +60,23 @@ char	*get_prefix(t_token *token, long value)
 	{
 		if (value < 0)
 			prefix = ft_strdup("-");
+		else if (has_flag(token, FLAG_SIGNED))
+			prefix = ft_strdup("+");
+		else if (has_flag(token, FLAG_SPACE))
+			prefix = ft_strdup(" ");
 		else
-		{
-			if (has_flag(token, FLAG_SIGNED))
-				prefix = ft_strdup("+");
-			else if (has_flag(token, FLAG_SPACE))
-				prefix = ft_strdup(" ");
-		}
+			prefix = ft_strdup("");
 	}
-	else if (has_flag(token, FLAG_ALTERNATIVE))
+	else if (has_flag(token, FLAG_ALTERNATIVE) && value != 0)
 	{
 		if (token->specifier == SPEC_HEXLOW)
 			prefix = ft_strdup("0x");
 		else if (token->specifier == SPEC_HEXUPP)
 			prefix = ft_strdup("0X");
+		else
+			prefix = ft_strdup("");
 	}
+	else
+		prefix = ft_strdup("");
 	return (prefix);
 }
