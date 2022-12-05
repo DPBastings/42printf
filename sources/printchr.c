@@ -18,9 +18,8 @@
 void	printpercent(t_carriage *carriage, t_token *token, va_list ap)
 {
 	(void) ap;
-	pad_left(carriage, token, 1);
+	(void) token;
 	carriage->print(carriage, "%", 1);
-	pad_right(carriage, token, 1);
 }
 
 void	printchr(t_carriage *carriage, t_token *token, va_list ap)

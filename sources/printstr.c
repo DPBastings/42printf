@@ -44,7 +44,7 @@ void	printstr(t_carriage *carriage, t_token *token, va_list ap)
 	str = va_arg(ap, char *);
 	if (str == NULL)
 	{
-		if (token->precision >= 6)
+		if (token->precision == -1 || token->precision >= 6)
 			printstrconst(carriage, token, "(null)");
 		else
 			printstrconst(carriage, token, "");

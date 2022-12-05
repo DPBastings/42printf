@@ -23,8 +23,10 @@ int	main(void)
 	char	*ptr;
 
 	ptr = ft_strdup("lasciate ogne speranza, voi ch'intrate");
-	test("str: NULL; leftalign [%-s]", NULL);
-	test("str: NULL; zeropad [%16s]", NULL);
+	test("str: NULL [%s]", NULL);
+	test("str: NULL; zeropad [%8s]", NULL);
+	test("str: NULL; precision = 4 [%.4s]", NULL);
+	test("str: NULL; precision = 7 [%.7s]", NULL);
 	free(ptr);
 	return (0);
 }

@@ -25,7 +25,9 @@ int	main(void)
 	test("%-05%");
 	test("%05%");
 	test("%.5%");
-	//test("%; deze conversie was kaputtski");
+	test("%12%");
+	test("%-12%");
+	test("%; deze conversie was kaputtski");
 	test("deze conversie is kaputtski: %0");
 	return (0);
 }

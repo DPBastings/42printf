@@ -39,9 +39,17 @@ void	printptr(t_carriage *carriage, t_token *token, va_list ap)
 	char			*prefix;
 
 	pointer = (unsigned long) va_arg(ap, void *);
-	prefix = ft_strdup("0x");
-	string = misc_itostr(pointer, token, "0123456789abcdef");
-	if (prefix == NULL || string == NULL)
-		return ;
-	printnum(carriage, token, string, prefix);
+	if (pointer == 0)
+	{
+		token->precision = -1;
+		printstrconst(carriage, token, "(nil)");
+	}
+	else
+	{
+		prefix = ft_strdup("0x");
+		string = misc_itostr(pointer, token, "0123456789abcdef");
+		if (prefix == NULL || string == NULL)
+			return ;
+		printnum(carriage, token, string, prefix);
+	}
 }
