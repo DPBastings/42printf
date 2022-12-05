@@ -1,6 +1,6 @@
 NAME := a.out
 
-SRC_FILES := test.c printtoken.c ../libftprintf.a
+SRC_FILES := test_str.c printtoken.c test_utils.c ../libftprintf.a
 CFLAGS ?= -Wall -Wextra -Werror
 .PHONY: all clean fclean re
 

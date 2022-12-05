@@ -37,7 +37,7 @@ HEADER_FILES := libftprintf.h\
 LIB_FILES := libft.a
 
 CFLAGS ?= -Wall -Wextra -Werror -I $(HEADER_DIR)
-AFLAGS ?= -rcu
+AFLAGS ?= -rc
 .PHONY: all bonus clean fclean re
 
 all: $(NAME)
