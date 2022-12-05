@@ -27,7 +27,7 @@ static size_t	truncate(char const *str, t_token *token)
 	return (len);
 }
 
-static void	printstr_sub(t_carriage *carriage, t_token *token, char *str)
+void	printstrconst(t_carriage *carriage, t_token *token, char *str)
 {
 	size_t	len;
 
@@ -43,7 +43,12 @@ void	printstr(t_carriage *carriage, t_token *token, va_list ap)
 
 	str = va_arg(ap, char *);
 	if (str == NULL)
-		printstr_sub(carriage, token, "(null)");
+	{
+		if (token->precision >= 6)
+			printstrconst(carriage, token, "(null)");
+		else
+			printstrconst(carriage, token, "");
+	}
 	else
-		printstr_sub(carriage, token, str);
+		printstrconst(carriage, token, str);
 }

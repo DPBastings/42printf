@@ -25,10 +25,11 @@ int	ft_vdprintf(int fd, char const *format, va_list ap)
 	carriage.print = print;
 	carriage.printed = 0;
 	carriage.paper = fd;
-	while (*format)
+	while (*format && carriage.printed != -1)
 	{
 		token = parser(&format);
-		expand_token(&carriage, token, ap);
+		if (!(expand_token(&carriage, token, ap)))
+			carriage.printed = -1;
 		free(token);
 	}
 	va_end(ap);

@@ -16,6 +16,11 @@
 
 void	print(t_carriage *self, char *str, size_t len)
 {
-	write(self->paper, str++, len);
-	self->printed += len;
+	if (self->printed != -1 && str)
+	{
+		write(self->paper, str++, len);
+		self->printed += len;
+	}
+	else
+		self->printed = -1;
 }

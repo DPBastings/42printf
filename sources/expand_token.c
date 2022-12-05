@@ -12,8 +12,9 @@
 
 #include "carriage.h"
 #include "token.h"
+#include <stddef.h>
 
-t_printer static	g_printdict[] = {
+static t_printer	g_printdict[] = {
 	printlit,
 	printdec,
 	printdec,
@@ -26,7 +27,10 @@ t_printer static	g_printdict[] = {
 	printpercent
 };
 
-void	expand_token(t_carriage *carriage, t_token *token, va_list ap)
+int	expand_token(t_carriage *carriage, t_token *token, va_list ap)
 {
+	if (token == NULL)
+		return (0);
 	g_printdict[token->specifier](carriage, token, ap);
+	return (1);
 }

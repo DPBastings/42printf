@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static int	parse_flags(t_token *token, char const **format)
+static void	parse_flags(t_token *token, char const **format)
 {
 	while (ft_strchr(FLAGS, **format))
 	{
@@ -32,16 +32,14 @@ static int	parse_flags(t_token *token, char const **format)
 			set_flag(token, FLAG_SIGNED);
 		(*format)++;
 	}
-	return (1);
 }
 
-static int	parse_field_width(t_token *token, char const **format)
+static void	parse_field_width(t_token *token, char const **format)
 {
 	token->field_width = misc_atoi(format);
-	return (1);
 }
 
-static int	parse_precision(t_token *token, char const **format)
+static void	parse_precision(t_token *token, char const **format)
 {
 	token->precision = -1;
 	if (**format == '.')
@@ -49,7 +47,6 @@ static int	parse_precision(t_token *token, char const **format)
 		(*format)++;
 		token->precision = misc_atoi(format);
 	}
-	return (1);
 }
 
 static int	parse_specifier(t_token *token, char const **format)
@@ -81,7 +78,7 @@ t_token	*parse_conversion(char const **format)
 	parse_precision(token, format);
 	if (!parse_specifier(token, format))
 	{
-		*format = start;
+		*format = start + 1;
 		free(token);
 		return (NULL);
 	}

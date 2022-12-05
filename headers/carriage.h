@@ -37,7 +37,7 @@ typedef struct s_carriage
 
 typedef void	(*t_printer)(t_carriage *, t_token *, va_list ap);
 
-void	expand_token(t_carriage *carriage, t_token *token, va_list ap);
+int		expand_token(t_carriage *carriage, t_token *token, va_list ap);
 void	print(t_carriage *self, char *str, size_t len);
 void	sprint(t_carriage *self, char *str, size_t len);
 void	asprint(t_carriage *self, char *str, size_t len);
@@ -52,6 +52,7 @@ void	printlit(t_carriage *carriage, t_token *token, va_list ap);
 void	printpercent(t_carriage *carriage, t_token *token, va_list ap);
 void	printptr(t_carriage *carriage, t_token *token, va_list ap);
 void	printstr(t_carriage *carriage, t_token *token, va_list ap);
+void	printstrconst(t_carriage *carriage, t_token *token, char *str);
 void	printuns(t_carriage *carriage, t_token *token, va_list ap);
 
 #endif
