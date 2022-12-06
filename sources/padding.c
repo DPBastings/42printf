@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 14:58:35 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 12:18:27 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/06 12:30:09 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 
 	padding = malloc(len);
 	if (padding == NULL)
+	{
+		carriage->printed = -1;
 		return ;
+	}
 	if (has_flag(token, FLAG_ZEROPADDING))
 		ft_memset(padding, '0', len);
 	else

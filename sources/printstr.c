@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 12:23:09 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 11:25:28 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/06 10:26:07 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,7 @@ void	printstr(t_carriage *carriage, t_token *token, va_list ap)
 
 	str = va_arg(ap, char *);
 	if (str == NULL)
-	{
-		if (token->precision == -1 || token->precision >= 6)
-			printstrconst(carriage, token, "(null)");
-		else
-			printstrconst(carriage, token, "");
-	}
+		printstrconst(carriage, token, "(null)");
 	else
 		printstrconst(carriage, token, str);
 }

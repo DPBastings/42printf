@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/04 15:09:02 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 14:22:00 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/06 12:47:21 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	printhex(t_carriage *carriage, t_token *token, va_list ap)
 		string = misc_itostr(number, token, "0123456789ABCDEF");
 	else
 		string = misc_itostr(number, token, "0123456789abcdef");
-	if (string == NULL)
-		return ;
 	printnum(carriage, token, string, prefix);
 }
 
@@ -39,17 +37,7 @@ void	printptr(t_carriage *carriage, t_token *token, va_list ap)
 	char			*prefix;
 
 	pointer = (unsigned long) va_arg(ap, void *);
-	if (pointer == 0)
-	{
-		token->precision = -1;
-		printstrconst(carriage, token, "(nil)");
-	}
-	else
-	{
-		prefix = ft_strdup("0x");
-		string = misc_itostr(pointer, token, "0123456789abcdef");
-		if (prefix == NULL || string == NULL)
-			return ;
-		printnum(carriage, token, string, prefix);
-	}
+	prefix = ft_strdup("0x");
+	string = misc_itostr(pointer, token, "0123456789abcdef");
+	printnum(carriage, token, string, prefix);
 }

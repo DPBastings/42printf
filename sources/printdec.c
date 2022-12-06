@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 16:12:09 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 15:04:03 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/06 12:48:26 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	printdec(t_carriage *carriage, t_token *token, va_list ap)
 
 	number = va_arg(ap, int);
 	prefix = get_prefix(token, number);
-	if (prefix == NULL)
-		return ;
 	if (number == -2147483648)
 		string = misc_itostr(2147483648, token, "0123456789");
 	else
@@ -54,8 +52,6 @@ void	printdec(t_carriage *carriage, t_token *token, va_list ap)
 			number *= -1;
 		string = misc_itostr(number, token, "0123456789");
 	}
-	if (string == NULL)
-		return (free(prefix));
 	printnum(carriage, token, string, prefix);
 }
 
@@ -67,10 +63,6 @@ void	printuns(t_carriage *carriage, t_token *token, va_list ap)
 
 	number = va_arg(ap, unsigned int);
 	prefix = get_prefix(token, number);
-	if (prefix == NULL)
-		return ;
 	string = misc_itostr(number, token, "0123456789");
-	if (string == NULL)
-		return (free(prefix));
 	printnum(carriage, token, string, prefix);
 }
