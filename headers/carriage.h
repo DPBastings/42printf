@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:01:57 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 15:23:31 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/13 16:32:46 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 /* The contents of this header are as follows:
@@ -49,6 +49,7 @@ void	printchr(t_carriage *carriage, t_token *token, va_list ap);
 void	printdec(t_carriage *carriage, t_token *token, va_list ap);
 void	printhex(t_carriage *carriage, t_token *token, va_list ap);
 void	printlit(t_carriage *carriage, t_token *token, va_list ap);
+void	printoct(t_carriage *carriage, t_token *token, va_list ap);
 void	printpercent(t_carriage *carriage, t_token *token, va_list ap);
 void	printptr(t_carriage *carriage, t_token *token, va_list ap);
 void	printstr(t_carriage *carriage, t_token *token, va_list ap);

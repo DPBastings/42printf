@@ -6,7 +6,7 @@
 #    By: dbasting <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/21 11:29:16 by dbasting      #+#    #+#                  #
-#    Updated: 2022/11/21 14:30:26 by dbasting      ########   odam.nl          #
+#    Updated: 2022/12/28 17:01:33 by dbasting      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_FILES := ft_printf.c\
 	printdec.c\
 	printhex.c\
 	printlit.c\
+	printoct.c\
 	printstr.c\
 	token.c
 OBJ_FILES := $(SRC_FILES:.c=.o)
@@ -36,7 +37,7 @@ HEADER_FILES := libftprintf.h\
 	token.h
 LIB_FILES := libft.a
 
-CFLAGS ?= -Wall -Wextra -Werror -I $(HEADER_DIR)
+CFLAGS ?= -Wall -Wextra -Werror -I $(HEADER_DIR) -I $(LIB_DIR)
 AFLAGS ?= -rc
 .PHONY: all bonus clean fclean re
 

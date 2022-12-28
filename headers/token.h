@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 16:11:11 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 15:27:10 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/13 16:33:27 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@
 # define FLAG_SPACE			8
 # define FLAG_SIGNED		16
 
-# define SPECIFIERS 		"diuxXcsp%"
+# define SPECIFIERS 		"diouxXcsp%"
 
 typedef enum e_specifiers
 {
 	SPEC_LIT,
 	SPEC_DEC,
 	SPEC_INT,
+	SPEC_OCT,
 	SPEC_UNS,
 	SPEC_HEXLOW,
 	SPEC_HEXUPP,

@@ -6,13 +6,13 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 14:58:35 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/06 12:30:09 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/16 11:32:51 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "carriage.h"
 #include "token.h"
-#include "../libft/libft.h"
+#include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 

@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 15:14:20 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 15:09:52 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/13 16:33:34 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static t_printer	g_printdict[] = {
 	printlit,
 	printdec,
 	printdec,
+	printoct,
 	printuns,
 	printhex,
 	printhex,

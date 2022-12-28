@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 16:12:09 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/06 12:48:26 by dbasting      ########   odam.nl         */
+/*   Updated: 2022/12/16 11:33:19 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <limits.h>
-#include <stdio.h>
 
 void	printnum(t_carriage *carriage, t_token *token, char *str, char *prfx)
 {
