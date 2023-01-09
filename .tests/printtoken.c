@@ -6,12 +6,12 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/21 16:20:46 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 16:24:18 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/09 17:07:38 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printtoken.h"
-#include "../headers/token.h"
+#include "../header/token.h"
 #include <stdio.h>
 
 void	printtoken(t_token *token)

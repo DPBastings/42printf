@@ -6,13 +6,13 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 16:47:59 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/28 17:05:03 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/09 17:08:21 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
-#include "../headers/libftprintf.h"
-#include "../libft/libft.h"
+#include "libftprintf.h"
+#include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>

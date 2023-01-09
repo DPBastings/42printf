@@ -1,7 +1,7 @@
 NAME := a.out
 
 SRC_FILES := test.c printtoken.c test_utils.c ../libftprintf.a
-CFLAGS ?= -Wall -Wextra -Werror
+CFLAGS ?= -Wall -Wextra -Werror -I ../header -I ../include -I ../libft
 .PHONY: all clean fclean re
 
 all: $(NAME) Makefile
