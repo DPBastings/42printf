@@ -2,7 +2,7 @@
 a.out
 *.a
 libft/*.o
-objects/
+object/
 temp/
 
 # Trash

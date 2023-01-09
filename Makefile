@@ -6,16 +6,18 @@
 #    By: dbasting <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/21 11:29:16 by dbasting      #+#    #+#                  #
-#    Updated: 2022/12/28 17:01:33 by dbasting      ########   odam.nl          #
+#    Updated: 2023/01/09 17:04:39 by dbasting      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libftprintf.a
 
-SRC_DIR := 	./sources/
-OBJ_DIR := 	./objects/
-HEADER_DIR := ./headers/
+SRC_DIR := ./source/
+OBJ_DIR := ./object/
+HDR_DIR := ./header/
+INC_DIR := ./include/
 LIB_DIR := ./libft/
+
 SRC_FILES := ft_printf.c\
 	carriage.c\
 	expand_token.c\
@@ -31,13 +33,13 @@ SRC_FILES := ft_printf.c\
 	printstr.c\
 	token.c
 OBJ_FILES := $(SRC_FILES:.c=.o)
-HEADER_FILES := libftprintf.h\
-	carriage.h\
+HDR_FILES := carriage.h\
 	misc.h\
 	token.h
+INC_FILES := libftprintf.h
 LIB_FILES := libft.a
 
-CFLAGS ?= -Wall -Wextra -Werror -I $(HEADER_DIR) -I $(LIB_DIR)
+CFLAGS ?= -Wall -Wextra -Werror -I$(HDR_DIR) -I$(INC_DIR) -I$(LIB_DIR)
 AFLAGS ?= -rc
 .PHONY: all bonus clean fclean re
 
@@ -56,7 +58,7 @@ $(NAME): $(addprefix $(OBJ_DIR),$(OBJ_FILES))
 	@ar $(AFLAGS) $@ ./.temp/*.o
 	@rm -rf ./.temp/
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(HEADER_DIR),$(HEADER_FILES))
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(HDR_DIR),$(HDR_FILES))
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) -c $(CFLAGS) -o $@ $<
 

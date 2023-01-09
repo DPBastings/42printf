@@ -6,12 +6,12 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 15:50:22 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/06 10:30:00 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/09 17:05:07 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/carriage.h"
-#include "../headers/token.h"
+#include "carriage.h"
+#include "token.h"
 #include <stdarg.h>
 #include <unistd.h>
 
