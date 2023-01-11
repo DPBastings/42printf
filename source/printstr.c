@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "carriage.h"
+#include "misc.h"
 #include "token.h"
-#include "../libft/libft.h"
-#include <stdio.h>
 
 static size_t	truncate(char const *str, t_token *token)
 {

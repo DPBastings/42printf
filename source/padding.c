@@ -12,7 +12,7 @@
 
 #include "carriage.h"
 #include "token.h"
-#include "libft.h"
+#include "misc.h"
 #include <stdlib.h>
 #include <stdio.h>
 

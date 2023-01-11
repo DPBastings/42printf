@@ -12,7 +12,6 @@
 
 #include "misc.h"
 #include "token.h"
-#include "../libft/libft.h"
 #include <stdlib.h>
 
 static void	ft_strrev(char *str)
@@ -27,6 +26,11 @@ static void	ft_strrev(char *str)
 		*str++ = *end;
 		*end-- = storage;
 	}
+}
+
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
 }
 
 static size_t	misc_itoa(unsigned long number, char *array, char const *digits)

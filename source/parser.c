@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "token.h"
-#include "../libft/libft.h"
+#include "misc.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>

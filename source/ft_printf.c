@@ -13,7 +13,6 @@
 #include "libftprintf.h"
 #include "carriage.h"
 #include "token.h"
-#include "../libft/libft.h"
 #include <stdarg.h>
 #include <stdlib.h>
 

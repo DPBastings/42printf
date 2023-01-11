@@ -12,7 +12,6 @@
 
 #include "token.h"
 #include "misc.h"
-#include "../libft/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 

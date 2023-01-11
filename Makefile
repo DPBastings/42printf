@@ -16,12 +16,13 @@ SRC_DIR := ./source/
 OBJ_DIR := ./object/
 HDR_DIR := ./header/
 INC_DIR := ./include/
-LIB_DIR := ./libft/
 
 SRC_FILES := ft_printf.c\
 	carriage.c\
 	expand_token.c\
-	misc.c\
+	misc_alloc.c\
+	misc_atoi.c\
+	misc_string.c\
 	padding.c\
 	parser.c\
 	parser_conversion.c\
@@ -37,7 +38,6 @@ HDR_FILES := carriage.h\
 	misc.h\
 	token.h
 INC_FILES := libftprintf.h
-LIB_FILES := libft.a
 
 CFLAGS ?= -Wall -Wextra -Werror -I$(HDR_DIR) -I$(INC_DIR) -I$(LIB_DIR)
 AFLAGS ?= -rc
@@ -49,25 +49,25 @@ bonus: all
 	@echo "Bonus is basis, vrind."
 	
 $(NAME): $(addprefix $(OBJ_DIR),$(OBJ_FILES))
-	@$(MAKE) --directory=$(LIB_DIR)
+	#@$(MAKE) --directory=$(LIB_DIR)
 	@ar $(AFLAGS) $@ $^
-	@mkdir -p .temp/
-	@cd .temp/ &&\
-	ar -x $(addprefix ../$(LIB_DIR),$(LIB_FILES)) &&\
-	cd ..
-	@ar $(AFLAGS) $@ ./.temp/*.o
-	@rm -rf ./.temp/
+	#@mkdir -p .temp/
+	#@cd .temp/ &&\
+	#ar -x $(addprefix ../$(LIB_DIR),$(LIB_FILES)) &&\
+	#cd ..
+	#@ar $(AFLAGS) $@ ./.temp/*.o
+	#@rm -rf ./.temp/
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(HDR_DIR),$(HDR_FILES))
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) -c $(CFLAGS) -o $@ $<
+	@$(CC) $< $(CFLAGS) -c -o $@
 
 clean:
 	@rm -f $(OBJ_DIR)*.o
-	@$(MAKE) --directory=$(LIB_DIR) clean
+	#@$(MAKE) --directory=$(LIB_DIR) clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) --directory=$(LIB_DIR) fclean
+	#@$(MAKE) --directory=$(LIB_DIR) fclean
 
 re: fclean all

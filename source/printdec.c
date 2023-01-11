@@ -12,7 +12,6 @@
 
 #include "carriage.h"
 #include "misc.h"
-#include "../libft/libft.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <limits.h>

@@ -12,8 +12,7 @@
 
 #include "carriage.h"
 #include "misc.h"
-#include "../libft/libft.h"
-#include "stdarg.h"
+#include <stdarg.h>
 
 void	printoct(t_carriage *carriage, t_token *token, va_list ap)
 {
