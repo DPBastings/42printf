@@ -35,8 +35,11 @@ size_t	ft_strlcat(char *dst, char const *src, size_t size)
 
 	dstlen = 0;
 	srclen = 0;
-	while (dst[dstlen++] && size--)
-		;
+	while (dst[dstlen] && size)
+	{
+		dstlen++;
+		size--;
+	}
 	while (src[srclen])
 	{
 		if (size)

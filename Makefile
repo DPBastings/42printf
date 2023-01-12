@@ -39,7 +39,7 @@ HDR_FILES := carriage.h\
 	token.h
 INC_FILES := libftprintf.h
 
-CFLAGS ?= -Wall -Wextra -Werror -I$(HDR_DIR) -I$(INC_DIR) -I$(LIB_DIR)
+CFLAGS ?= -Wall -Wextra -Werror -I$(HDR_DIR) -I$(INC_DIR)
 AFLAGS ?= -rc
 .PHONY: all bonus clean fclean re
 
