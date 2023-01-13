@@ -49,14 +49,7 @@ bonus: all
 	@echo "Bonus is basis, vrind."
 	
 $(NAME): $(addprefix $(OBJ_DIR),$(OBJ_FILES))
-	#@$(MAKE) --directory=$(LIB_DIR)
 	@ar $(AFLAGS) $@ $^
-	#@mkdir -p .temp/
-	#@cd .temp/ &&\
-	#ar -x $(addprefix ../$(LIB_DIR),$(LIB_FILES)) &&\
-	#cd ..
-	#@ar $(AFLAGS) $@ ./.temp/*.o
-	#@rm -rf ./.temp/
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(HDR_DIR),$(HDR_FILES))
 	@mkdir -p $(OBJ_DIR)
@@ -64,10 +57,8 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(addprefix $(HDR_DIR),$(HDR_FILES))
 
 clean:
 	@rm -f $(OBJ_DIR)*.o
-	#@$(MAKE) --directory=$(LIB_DIR) clean
 
 fclean: clean
 	@rm -f $(NAME)
-	#@$(MAKE) --directory=$(LIB_DIR) fclean
 
 re: fclean all
