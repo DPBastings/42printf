@@ -79,7 +79,6 @@ char	*ft_strdup(char const *str)
 	dup = malloc(sizeof(char) * size);
 	if (dup == NULL)
 		return (NULL);
-	dup[size] = '\0';
 	while (size--)
 		dup[size] = str[size];
 	return (dup);
