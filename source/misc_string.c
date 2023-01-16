@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-size_t	ft_strlen(char const *str)
+size_t	misc_strlen(char const *str)
 {
 	size_t	len;
 
@@ -12,7 +12,7 @@ size_t	ft_strlen(char const *str)
 	return (len);
 }
 
-char	*ft_strchr(char const *str, int c)
+char	*misc_strchr(char const *str, int c)
 {
 	char	character;
 	
@@ -28,7 +28,7 @@ char	*ft_strchr(char const *str, int c)
 	return (NULL);
 }
 
-size_t	ft_strlcat(char *dst, char const *src, size_t size)
+size_t	misc_strlcat(char *dst, char const *src, size_t size)
 {
 	size_t	srclen;
 	size_t	dstlen;
@@ -57,7 +57,7 @@ size_t	ft_strlcat(char *dst, char const *src, size_t size)
 	return (dstlen + srclen);
 }
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*misc_memset(void *b, int c, size_t len)
 {
 	unsigned char	*dst;
 	
@@ -70,12 +70,12 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-char	*ft_strdup(char const *str)
+char	*misc_strdup(char const *str)
 {
 	char	*dup;
 	size_t	size;
 
-	size = ft_strlen(str) + 1;
+	size = misc_strlen(str) + 1;
 	dup = malloc(sizeof(char) * size);
 	if (dup == NULL)
 		return (NULL);

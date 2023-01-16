@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 14:58:51 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/28 12:27:40 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/16 15:33:53 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_token	*parse_literal(char const **format)
 {
 	t_token	*new;
 
-	new = ft_calloc(1, sizeof(t_token));
+	new = misc_calloc(1, sizeof(t_token));
 	if (new == NULL)
 		return (NULL);
 	new->flags = **format;

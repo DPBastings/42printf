@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/04 15:09:02 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/06 12:47:21 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/16 15:34:37 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	printptr(t_carriage *carriage, t_token *token, va_list ap)
 	char			*prefix;
 
 	pointer = (unsigned long) va_arg(ap, void *);
-	prefix = ft_strdup("0x");
+	prefix = misc_strdup("0x");
 	string = misc_itostr(pointer, token, "0123456789abcdef");
 	printnum(carriage, token, string, prefix);
 }

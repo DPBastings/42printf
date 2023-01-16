@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 14:58:35 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/16 11:32:51 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/16 15:33:42 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	print_padding(t_carriage *carriage, t_token *token, size_t len)
 		return ;
 	}
 	if (has_flag(token, FLAG_ZEROPADDING))
-		ft_memset(padding, '0', len);
+		misc_memset(padding, '0', len);
 	else
-		ft_memset(padding, ' ', len);
+		misc_memset(padding, ' ', len);
 	carriage->print(carriage, padding, len);
 	free(padding);
 }
@@ -62,24 +62,24 @@ char	*get_prefix(t_token *token, long value)
 	if (token->specifier == SPEC_DEC || token->specifier == SPEC_INT)
 	{
 		if (value < 0)
-			prefix = ft_strdup("-");
+			prefix = misc_strdup("-");
 		else if (has_flag(token, FLAG_SIGNED))
-			prefix = ft_strdup("+");
+			prefix = misc_strdup("+");
 		else if (has_flag(token, FLAG_SPACE))
-			prefix = ft_strdup(" ");
+			prefix = misc_strdup(" ");
 		else
-			prefix = ft_strdup("");
+			prefix = misc_strdup("");
 	}
 	else if (has_flag(token, FLAG_ALTERNATIVE) && value != 0)
 	{
 		if (token->specifier == SPEC_HEXLOW)
-			prefix = ft_strdup("0x");
+			prefix = misc_strdup("0x");
 		else if (token->specifier == SPEC_HEXUPP)
-			prefix = ft_strdup("0X");
+			prefix = misc_strdup("0X");
 		else
-			prefix = ft_strdup("");
+			prefix = misc_strdup("");
 	}
 	else
-		prefix = ft_strdup("");
+		prefix = misc_strdup("");
 	return (prefix);
 }

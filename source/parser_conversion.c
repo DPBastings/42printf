@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 15:00:57 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/11/21 16:18:59 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/16 15:34:08 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static void	parse_flags(t_token *token, char const **format)
 {
-	while (ft_strchr(FLAGS, **format))
+	while (misc_strchr(FLAGS, **format))
 	{
 		if (**format == '#')
 			set_flag(token, FLAG_ALTERNATIVE);
@@ -52,7 +52,7 @@ static int	parse_specifier(t_token *token, char const **format)
 {
 	char	*found;
 
-	found = ft_strchr(SPECIFIERS, **format);
+	found = misc_strchr(SPECIFIERS, **format);
 	if (found)
 	{
 		token->specifier = 1 + found - SPECIFIERS;
@@ -69,7 +69,7 @@ t_token	*parse_conversion(char const **format)
 
 	(*format)++;
 	start = *format;
-	token = ft_calloc(1, sizeof(t_token));
+	token = misc_calloc(1, sizeof(t_token));
 	if (token == NULL)
 		return (NULL);
 	parse_flags(token, format);

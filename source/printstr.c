@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/11 12:23:09 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/06 10:26:07 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/16 15:34:58 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static size_t	truncate(char const *str, t_token *token)
 {
 	size_t	len;
 
-	len = ft_strlen(str);
+	len = misc_strlen(str);
 	if (token->precision == -1)
 		return (len);
 	if (len > (size_t) token->precision)

@@ -6,7 +6,7 @@
 /*   By: dbasting <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 16:12:09 by dbasting      #+#    #+#                 */
-/*   Updated: 2022/12/16 11:33:19 by dbasting      ########   odam.nl         */
+/*   Updated: 2023/01/16 15:34:23 by dbasting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	printnum(t_carriage *carriage, t_token *token, char *str, char *prfx)
 	size_t	string_len;
 	size_t	prefix_len;
 
-	string_len = ft_strlen(str);
-	prefix_len = ft_strlen(prfx);
+	string_len = misc_strlen(str);
+	prefix_len = misc_strlen(prfx);
 	if (has_flag(token, FLAG_ZEROPADDING))
 		carriage->print(carriage, prfx, prefix_len);
 	pad_left(carriage, token, prefix_len + string_len);
