@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   misc_string.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dbasting <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/23 12:08:03 by dbasting      #+#    #+#                 */
+/*   Updated: 2023/01/23 12:08:04 by dbasting      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "misc.h"
 #include <stddef.h>
 #include <stdlib.h>
@@ -15,7 +27,7 @@ size_t	misc_strlen(char const *str)
 char	*misc_strchr(char const *str, int c)
 {
 	char	character;
-	
+
 	character = c;
 	while (*str)
 	{
@@ -60,7 +72,7 @@ size_t	misc_strlcat(char *dst, char const *src, size_t size)
 void	*misc_memset(void *b, int c, size_t len)
 {
 	unsigned char	*dst;
-	
+
 	dst = b;
 	while (len)
 	{
